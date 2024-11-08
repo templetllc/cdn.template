@@ -79,6 +79,12 @@ ul {
     background-color: #ffffff;
 }
 
+.bg-image {
+    background-position: center!important;
+    background-repeat: no-repeat!important;
+    background-size: cover!important;
+}
+
 /* Style for the character counter text */
 [data-counter]::after {
     content: attr(data-counter);
