@@ -73,6 +73,12 @@ ul {
     background-color: #ffffff;
 }
 
+.b-divider-2 {
+    width: 100%;
+    height: 3rem!important;
+    background-color: #ffffff;
+}
+
 /* Style for the character counter text */
 [data-counter]::after {
     content: attr(data-counter);
