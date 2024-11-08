@@ -11,7 +11,10 @@
 body {
     font-family: "Roboto", sans-serif!important;
     color: black;
-    background-color: orange;
+}
+
+.bg-body-secondary {
+    background-color: orange!important;
 }
 
 .container-sm {
