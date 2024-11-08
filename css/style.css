@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* --------------------------- */
+/* --------------------------- */
+.edit-toggle-btn {
+    display: none!important;
+}
+/* --------------------------- */
+/* --------------------------- */
+
+body {
+    font-family: "Roboto", sans-serif!important;
+    color: black;
+    
+}
+
+.container-sm {
+    max-width: 700px!important;
+}
+
+.display-1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: normal;
+    margin-bottom: .5rem;
+}
+
+.display-2 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: normal;
+    margin-bottom: .5rem;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+p {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: normal;
+}
+
+footer p {
+    font-size: 8px;
+}
+
+ul {
+    padding-left: 10px;
+    margin-bottom: 0px;
+    li {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: normal;
+        line-height: normal;
+        span {
+            width: 100%;
+            display: block;
+        }
+    }
+}
+
+.b-divider {
+    width: 100%;
+    height: 1.5rem;
+    background-color: #ffffff;
+}
+
+/* Style for the character counter text */
+[data-counter]::after {
+    content: attr(data-counter);
+    display: block;
+    font-size: 10px;
+    margin-top: 2px;
+    font-weight: 400;
+}
+
+/* Colors for different states of the character counter */
+.counter-normal::after {color: gray;}
+.counter-warning::after {color: red;}
+.counter-limit::after {color: orange;}
+
+[contenteditable="true"]:hover {
+    background-color: #ffffff; 
+    outline: 1px dashed #cccccc;
+    outline-offset: 2px;
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 1px dashed #858585;
+    outline-offset: 2px;
+}
+
+/* Floating button to toggle edit mode */
+.edit-toggle-btn {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 14px;
+    z-index: 10;
+}
+
+/* Hide add and delete buttons initially */
+.add-item-btn, li button {
+   display: none;
+}
+
+/* Show buttons when edit mode is active */
+.edit-mode .add-item-btn, .edit-mode li button {
+    display: inline-block;
+}
+
+/* Floating imageSuggestion button */
+.imageSuggestion-toggle-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 16px;
+    z-index: 1000;
+}
+
+/* Tooltip style for the imageSuggestion */
+.imageSuggestion-tooltip {
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    width: auto;
+    display: none;
+    z-index: 1000;
+}
+
+/* Tooltip input */
+.imageSuggestion-tooltip input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+/* Change button color when imageSuggestion mode is active */
+.imageSuggestion-toggle-btn.active {
+    background-color: #dc3545;
+}
+  
+/* Change cursor to crosshair for imageSuggestion mode */
+.imageSuggestion-mode .imageSuggestion-img {
+    cursor: crosshair !important;
+}
+  
+/* Style for the floating cursor text */
+.cursor-text {
+    position: absolute;
+    pointer-events: none; /* Ensures the text does not interfere with clicking */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    display: none; /* Initially hidden */
+    z-index: 1001;
+}
+
+/* Tooltip adjustments for displaying an image */
+.imageSuggestion-tooltip img {
+    max-width: 100%; /* Ensures the image fits within the tooltip */
+    margin-top: 5px;
+    border-radius: 4px;
+}
+
+/* Pin indicator for images with imageSuggestion */
+.imageSuggestion-pin {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: none; /* Hidden by default */
+}
+
+/* Show pins only in imageSuggestion mode */
+.imageSuggestion-mode .imageSuggestion-pin.active {
+    display: block;
+}
+
+/* Positioning for images with imageSuggestion */
+.image-container {
+    position: relative; /* Allows the pin to be positioned absolutely within the container */
+}
+
+@media print {
+    [data-counter]::after {
+        display: none!important;
+    }
+}
