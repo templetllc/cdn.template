@@ -1,0 +1,38 @@
+name: Deploy CSS and JS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.css'
+      - '**/*.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Update CSS version
+        run: |
+          # Reemplaza 'v=1.0' en el HTML con una nueva versión usando fecha y hora.
+          # Esto solo funciona si tienes una referencia de 'v=1.0' en el HTML.
+          VERSION=$(date +%s)
+          sed -i "s/v=[0-9]*/v=${VERSION}/g" index.html
+
+      - name: Commit and push version update
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add index.html
+          git commit -m "Update CSS and JS version to ${VERSION}"
+          git push origin main
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # Directorio donde está tu HTML y CSS
