@@ -1,3 +1,93 @@
+// Function to update the character counter within the same element, ignoring extra spaces and newlines
+function updateCharCounter(element) {
+  const max = parseInt(element.dataset.max, 10) || 100;
+  const min = parseInt(element.dataset.min, 10) || 10;
+
+  // Clean content by removing extra spaces and newlines
+  const content = element.textContent.replace(/\s+/g, ' ').trim();
+  const charCount = content.length;
+
+  // Update the data-counter attribute with the character count
+  element.setAttribute('data-counter', `${charCount}/${max}`);
+
+  // Reset all counter classes
+  element.classList.remove('counter-normal', 'counter-warning', 'counter-limit');
+
+  // Change counter color based on character limits
+  if (charCount >= min && charCount <= max) {
+      element.classList.add('counter-normal'); // Within acceptable range
+  } else if (charCount < min) {
+      element.classList.add('counter-warning'); // Below minimum
+  } else {
+      element.classList.add('counter-limit'); // Exceeds maximum
+  }
+}
+
+// Apply the counter to each element with data-max and data-min
+document.querySelectorAll('[data-max][data-min]').forEach((element) => {
+  updateCharCounter(element); // Initial counter setup
+
+  // Listen for content changes within the editable element
+  element.addEventListener('input', () => updateCharCounter(element));
+});
+
+
+
+
+
+// Function to toggle edit mode for a section
+function toggleEditMode(button) {
+  const section = button.closest(".position-relative");
+  section.classList.toggle("edit-mode");
+}
+
+// Initialize delete buttons for pre-existing items with data-delete="true"
+document.querySelectorAll('li[data-delete="true"]').forEach((item) => {
+  addDeleteButton(item);
+});
+
+// Function to add a delete button to a specified list item
+function addDeleteButton(listItem) {
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Delete";
+  deleteButton.onclick = () => listItem.remove();
+
+  // Insert delete button after the editable span, making it non-editable
+  listItem.appendChild(deleteButton);
+}
+
+// Function to add a new list item to a specified list
+function addListItem(listId) {
+  const list = document.getElementById(listId);
+  const newItem = document.createElement("li");
+
+  // Create a span for the editable content
+  const editableContent = document.createElement("span");
+  editableContent.contentEditable = "true";
+  editableContent.textContent = "[New List Item]";
+  editableContent.setAttribute("data-max", "120");
+  editableContent.setAttribute("data-min", "40");
+  editableContent.setAttribute("data-counter", "");
+  editableContent.classList.add("counter-normal");
+
+  // Append the editable content and add the new item to the list
+  newItem.appendChild(editableContent);
+  list.appendChild(newItem);
+
+  // Add a delete button to the new item
+  addDeleteButton(newItem);
+
+  // Update the character counter for the new editable span
+  updateCharCounter(editableContent);
+
+  // Add event listener to update the counter on content change within the editable span
+  editableContent.addEventListener("input", () => updateCharCounter(editableContent));
+}
+
+
+
+
+
 let imageSuggestionCount = 0; // Variable to track the number of active feedbacks
 let feedbackMode = false; // Variable to track imageSuggestion mode
 let selectedSuggestionImage = null; // Variable to hold the clicked image element
