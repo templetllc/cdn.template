@@ -59,6 +59,7 @@ ul {
         font-weight: 400;
         letter-spacing: normal;
         line-height: normal;
+        margin-bottom: 10px;
         span {
             width: 100%;
             display: block;
