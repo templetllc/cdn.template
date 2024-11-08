@@ -13,10 +13,6 @@ body {
     color: black;
 }
 
-.bg-body-secondary {
-    background-color: red!important;
-}
-
 .container-sm {
     max-width: 700px!important;
 }
