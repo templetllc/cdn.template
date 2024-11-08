@@ -88,7 +88,7 @@ ul {
 .counter-limit::after {color: orange;}
 
 [contenteditable="true"]:hover {
-    background-color: #ffffff; 
+    background-color: transparent!important; 
     outline: 1px dashed #cccccc;
     outline-offset: 2px;
     cursor: pointer;
