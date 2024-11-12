@@ -17,10 +17,6 @@ body {
     max-width: 700px!important;
 }
 
-.container-sm {
-    max-width: 1000px!important;
-}
-
 .display-1 {
     font-size: 36px;
     font-weight: 700;
@@ -226,6 +222,20 @@ ul {
 .image-container {
     position: relative; /* Allows the pin to be positioned absolutely within the container */
 }
+
+
+/* 11/12/24 */
+#deck-wrapper {
+    overflow: hidden;
+}
+
+.container-sm.container-deck {
+    max-width: 960px!important;
+    max-height: 590px!important;
+}
+
+
+
 
 @media print {
     [data-counter]::after {
