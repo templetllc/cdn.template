@@ -224,7 +224,7 @@ ul {
 }
 
 
-/* 11/12/24 */
+/* Update :: 11/12/24 */
 #deck-wrapper {
     overflow: hidden;
 }
@@ -233,8 +233,6 @@ ul {
     max-width: 960px!important;
     max-height: 590px!important;
 }
-
-
 
 
 @media print {
